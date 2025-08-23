@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Social Links</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script>document.documentElement.classList.add('js');</script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #ece9e6, #ffffff);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #333;
+      transition: background 0.5s ease, color 0.5s ease;
+      background-size: 200% 200%;
+      animation: bg-pan 12s ease infinite;
+    }
+    .wrapper { text-align: center; padding: 24px; }
+    .title { font-size: 32px; font-weight: bold; margin-bottom: 10px; }
+    .subtitle { font-size: 16px; opacity: 0.8; margin-bottom: 25px; }
+    .container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.15);
+      transition: background 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .card {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #f9f9f9;
+      border-radius: 20px;
+      color: #333;
+      font-size: 32px;
+      transition: transform .35s ease, box-shadow .35s ease, background .35s ease, color .35s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,.1);
+      border: 2px solid #ddd;
+      text-decoration: none;
+      --brand: rgba(0,0,0,0.25);
+    }
+    .card:hover { transform: translateY(-8px); color: #fff; box-shadow: 0 12px 24px rgba(0,0,0,.25), 0 8px 24px var(--brand); }
+
+    /* أيقونات */
+    .facebook      { --brand: rgba(24,119,242,0.45); }
+    .github        { --brand: rgba(51,51,51,0.45); }
+    .whatsapp      { --brand: rgba(37,211,102,0.45); }
+    .telegram      { --brand: rgba(0,136,204,0.45); }
+    .instagram     { --brand: rgba(214,36,159,0.45); }
+    .linkedin      { --brand: rgba(10,102,194,0.45); }
+    .email         { --brand: rgba(234,67,53,0.45); }
+    .phone         { --brand: rgba(40,167,69,0.45); }
+    .youtube       { --brand: rgba(255,0,0,0.45); }
+
+    .facebook:hover { background: #1877f2; }
+    .github:hover   { background: #333; }
+    .whatsapp:hover { background: #25d366; }
+    .telegram:hover { background: #0088cc; }
+    .instagram:hover{ background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+    .linkedin:hover { background: #0a66c2; }
+    .email:hover    { background: #ea4335; }
+    .phone:hover    { background: #34af23; }
+    .youtube:hover  { background: #ff0000; }
+
+    /* زرار Dark Mode */
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    /* الوضع الليلي */
+    body.dark {
+      background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+      color: #eee;
+    }
+    body.dark .container { background: #2a2a2a; box-shadow: 0 6px 20px rgba(255,255,255,.1); }
+    body.dark .card { background: #333; border-color: #555; color: #eee; }
+    body.dark .toggle-btn { background: #eee; color: #111; }
+
+    /* أنيميشن خلفية */
+    @keyframes bg-pan {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @media (max-width: 768px) {
+  .social-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .social-box {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  .logo-name {
+    font-size: 18px;
+    left: 10px;
+  }
+}
+.logo-name {
+  animation: slideIn 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.logo-name {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #333; /* ممكن نغير اللون */
+  z-index: 1000;
+  cursor: default;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+body.dark .logo-name {
+  color: #fff; /* لون مختلف في Dark Mode */
+}
+.logo-name:hover {
+  color: #00cc88;
+  text-shadow: 0 0 8px rgba(0, 204, 136, 0.7);
+}
+
+  </style>
+</head>
+<body>
+  <div class="logo-name">Islam Osama</div>
+  <button class="toggle-btn" id="toggleMode">🌙 Dark</button>
+  <div class="wrapper">
+    <div class="title">Contact Me</div>
+    <div class="subtitle">Connect with me through my socials.</div>
+
+    <div class="container" id="cards">
+      <a href="https://web.facebook.com/eslam.osama.3532/" target="_blank" class="card facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://github.com/islam-osama2024" target="_blank" class="card github"><i class="fab fa-github"></i></a>
+      <a href="https://wa.me/201021771120" target="_blank" class="card whatsapp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://t.me/islam-osama2024" target="_blank" class="card telegram"><i class="fab fa-telegram"></i></a>
+      <a href="https://www.instagram.com/eslamosama_11/?__pwa=1" target="_blank" class="card instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/eslam-osama-0119242a6/" target="_blank" class="card linkedin"><i class="fab fa-linkedin-in"></i></a>
+      <a href="mailto:osamaeslam483@gmail.com" class="card email"><i class="fas fa-envelope"></i></a>
+      <a href="tel:+201021771120" class="card phone"><i class="fas fa-phone"></i></a>
+      <a href="https://www.youtube.com/watch?v=9IfbLSU_9YE" target="_blank" class="card youtube"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+
+<script>
+  const toggleBtn = document.getElementById("toggleMode");
+
+  // تحميل الوضع من localStorage أول ما يفتح
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    toggleBtn.textContent = "☀️ Light";
+  }
+
+  // تبديل الوضع وحفظه
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      toggleBtn.textContent = "☀️ Light";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggleBtn.textContent = "🌙 Dark";
+    }
+  });
+</script>
+
+</body>
+</html>
